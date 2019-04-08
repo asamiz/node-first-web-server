@@ -5,19 +5,6 @@ var app = express();
 
 const port = process.env.PORT || 6633;
 
-app.engine(
-  "hbs",
-  hbs({
-    extname: "hbs",
-    defaultLayout: "base",
-    layoutsDir: path.join(__dirname, "views/layouts"),
-    partialsDir: [
-      //  path to your partials
-      path.join(__dirname, "views/partials")
-    ]
-  })
-);
-
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/Views/Partials");
 
