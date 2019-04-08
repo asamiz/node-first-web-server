@@ -6,7 +6,7 @@ var app = express();
 const port = process.env.PORT || 6633;
 
 app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/Views/Partials");
+hbs.registerPartials("/Views/Partials");
 
 app.use((req, res, next) => {
   var now = new Date().toString();
