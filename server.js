@@ -32,14 +32,17 @@ hbs.registerHelper("upperIt", text => {
 });
 
 app.get("/", (req, res) => {
-  res.send({ name: "Ahmed Sami", age: 25 });
+  res.render("home.hbs");
 });
 
 app.get("/about", (req, res) => {
-  res.render("about.hbs", {
-    pageTitle: "About Page",
-    message: "this is the message!"
-  });
+  res.render("about.hbs");
 });
 
-app.listen(port);
+app.get("/contactus", (req, res) => {
+  res.render("contactus.hbs");
+});
+
+app.listen(port, () => {
+  console.log("Server is running >>>>>>>>>");
+});
