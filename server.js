@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(__dirname + "/Public"));
-app.set("Views", path.join(__dirname, "Views"));
+app.set("Views", path.join(__dirname + "Views"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
