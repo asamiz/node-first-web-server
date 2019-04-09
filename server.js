@@ -7,7 +7,7 @@ const port = process.env.PORT || 6633;
 
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/Views/foot.hbs");
-hbs.registerPartials(__dirname + "/Views/foot.hbs");
+hbs.registerPartials(__dirname + "/Views/head.hbs");
 
 app.use((req, res, next) => {
   var now = new Date().toString();
