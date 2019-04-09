@@ -6,8 +6,8 @@ var app = express();
 const port = process.env.PORT || 6633;
 
 app.set("view engine", "hbs");
-hbs.registerPartials("/Views/foot.hbs");
-hbs.registerPartials("/Views/head.hbs");
+hbs.registerPartials("/../Views/foot.hbs");
+hbs.registerPartials("/../Views/head.hbs");
 
 app.use((req, res, next) => {
   var now = new Date().toString();
