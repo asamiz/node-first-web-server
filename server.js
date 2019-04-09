@@ -1,14 +1,16 @@
+// The requiring section
 const express = require("express");
-const hbs = require("hbs");
 const fs = require("fs");
+const ejs = require("ejs");
+const path = require("path");
+
+//Intialize the app with the server
 var app = express();
 
+// specifing the port to deploy on it
 const port = process.env.PORT || 6633;
 
-app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/Views/foot.hbs");
-hbs.registerPartials(__dirname + "/Views/head.hbs");
-
+// Config. app to use the middlewares
 app.use((req, res, next) => {
   var now = new Date().toString();
   var log = `${now}: ${req.method} & ${req.url}`;
@@ -23,25 +25,24 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(__dirname + "/Public"));
-
-hbs.registerHelper("getCurrentYear", () => {
-  return new Date().getFullYear();
-});
-
-hbs.registerHelper("upperIt", text => {
-  return text.toUpperCase();
-});
+app.set("Views", path.join(__dirname, "Views"));
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("home.hbs");
+  res.render("home.ejs");
 });
 
 app.get("/about", (req, res) => {
-  res.render("about.hbs");
+  res.render("about.ejs");
 });
 
 app.get("/contactus", (req, res) => {
-  res.render("contactus.hbs");
+  res.render("contactus.ejs", {
+    people: [
+      { name: "Ahmed Sami", tel: 45644 },
+      { name: "Sami Essayed", tel: 57879 }
+    ]
+  });
 });
 
 app.listen(port, () => {
